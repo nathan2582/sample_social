@@ -7,6 +7,12 @@ class PostModel {
   PostModel({
     required this.id,
     required this.title,
+    // Definitely needs:
+
+    // required this.userId,
+    // required this.userName,
+    // required this.userImageUrl,
+
     // could be a list of ContentType object, with the type, video, image,
     // etc, urlString, and other parameters
     required this.contentImageUrl,
@@ -16,6 +22,9 @@ class PostModel {
   });
 
   final String id;
+  // final String userId;
+  // final String userName;
+  // final String userImageUrl;
   final String? title;
   final String? contentImageUrl;
   final String? body;
