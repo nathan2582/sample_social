@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sample_social/src/models/user_model.dart';
+import 'package:sample_social/src/models/user/user_model.dart';
 import 'package:sample_social/src/repos/user/fake_user_repo.dart';
 
 // I typically have a BaseState abstract class that handles common tasks like,

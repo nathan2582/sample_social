@@ -1,4 +1,4 @@
-import 'package:sample_social/src/models/user_model.dart';
+import 'package:sample_social/src/models/user/user_model.dart';
 
 // TODO: Need Tests for sure.
 class FakeUserRepo {

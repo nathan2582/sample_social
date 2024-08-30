@@ -15,6 +15,8 @@ class UserProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Does this need to be a proxy provider? The state of FakeUserRepo does
+    // not change, so I am not sure if it is necessary.
     return ChangeNotifierProvider(
       create: (context) => UserProfilePageViewModel(
         uid,

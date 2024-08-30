@@ -16,13 +16,13 @@ class UserModel {
   });
 
   final String uid;
-  final String name;
-  final String userName;
-  final String userImageUrl;
-  final String bio;
-  final int postCount;
-  final int followersCount;
-  final int followingCount;
+  final String? name;
+  final String? userName;
+  final String? userImageUrl;
+  final String? bio;
+  final int? postCount;
+  final int? followersCount;
+  final int? followingCount;
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);

@@ -9,7 +9,9 @@ class App extends StatelessWidget {
     return const MaterialApp(
       // This would be a go_router implementation, but given the time constraints,
       // using Navigator 1.0 to reduce scope and hit acceptance criteria.
-      home: PostFeedPage(),
+      home: PostFeedPage(
+        uid: 'fakeUid',
+      ),
     );
   }
 }

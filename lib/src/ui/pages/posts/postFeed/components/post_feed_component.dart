@@ -1,20 +1,26 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:sample_social/src/models/post/post_model.dart';
+import 'package:sample_social/src/ui/pages/posts/postDetails/post_details_page.dart';
 import 'package:sample_social/src/ui/pages/posts/postFeed/components/post_component_likes.dart';
 
-class PostDetailsPage extends StatelessWidget {
-  const PostDetailsPage(this.post, {super.key});
+class PostFeedComponent extends StatelessWidget {
+  const PostFeedComponent(this.post, {super.key});
 
   final PostModel post;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Post Details'),
-      ),
-      body: Container(
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => PostDetailsPage(post),
+          ),
+        );
+      },
+      child: Container(
         color: Theme.of(context).colorScheme.surface,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,14 +49,6 @@ class PostDetailsPage extends StatelessWidget {
                 style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
-              ),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-              child: Text(
-                post.body ?? '',
-                style: Theme.of(context).textTheme.bodyLarge,
               ),
             ),
             Padding(
