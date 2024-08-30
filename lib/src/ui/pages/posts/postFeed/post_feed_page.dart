@@ -18,7 +18,8 @@ class PostFeedPage extends StatelessWidget {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) {
-                    return const UserProfilePage();
+                    const uid = 'dsihweoifhwefoihh';
+                    return const UserProfilePage(uid: uid);
                   },
                 ),
               );
