@@ -44,6 +44,7 @@ class PostFeedComponent extends StatelessWidget {
 
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+              // truncate the title if it is too long
               child: Text(
                 post.title ?? '',
                 style: Theme.of(context).textTheme.headlineLarge?.copyWith(
