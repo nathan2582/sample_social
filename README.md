@@ -26,6 +26,10 @@ When I saw how much time I spent out of scope, I started to panic and moved righ
 
 Pagination.. I am embarrassed I did not get the post pagination implemented within the time constraint.
 
+I also realize that I did not handle the friends portion within the UserModel. I can see a few ways to handle that.
+
+Either the friend user ids come back as a List of Strings on the user model. Or they could be a separate call to a friends endpoint that returns paginated List of UserModels of the friends.
+
 I forgot to add userId, userName, and userAvatarImage to the PostModel. That was an oversight and would have been noticed had I given myself more time on that feature.
 
 Then I added an InkWell to each post component to tap into a post details page.
