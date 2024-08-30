@@ -17,6 +17,9 @@ class UserProfilePageViewModel extends ChangeNotifier {
   final String _uid;
   String? userImageUrl;
 
+  String get uid => _uid;
+  String get bio => _user?.bio ?? '';
+  String get name => _user?.name ?? '';
   int get postCount => _user?.postCount ?? 0;
   int get followersCount => _user?.followersCount ?? 0;
   int get followingCount => _user?.followingCount ?? 0;

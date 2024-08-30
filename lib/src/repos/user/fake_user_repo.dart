@@ -1,5 +1,4 @@
 import 'package:sample_social/src/models/user_model.dart';
-import 'package:sample_social/src/ui/pages/userProfile/user_profile_page_view_model.dart';
 
 // TODO: Need Tests for sure.
 class FakeUserRepo {

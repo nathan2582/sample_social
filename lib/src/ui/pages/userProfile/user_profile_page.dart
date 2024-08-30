@@ -1,8 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sample_social/src/repos/user/fake_user_repo.dart';
-import 'package:sample_social/src/ui/pages/userProfile/user_profile_page_view_model.dart';
+import 'package:sample_social/src/ui/pages/userProfile/viewModel/user_profile_page_view_model.dart';
+import 'package:sample_social/src/ui/pages/userProfile/userPosts/user_profile_posts_section.dart';
+import 'package:sample_social/src/ui/pages/userProfile/components/user_profile_top_section.dart';
 
 class UserProfilePage extends StatelessWidget {
   const UserProfilePage({
@@ -26,91 +27,64 @@ class UserProfilePage extends StatelessWidget {
           appBar: AppBar(
             title: const Text('User Profile'),
           ),
-          body: ListView(
-            children: [
-              UserProfileTopSection(
-                userImageUrl: vm.userImageUrl,
-                postCount: vm.postCount,
-                followersCount: vm.followersCount,
-                followingCount: vm.followingCount,
-              ),
-            ],
+          floatingActionButton: FloatingActionButton(
+            child: const Icon(Icons.edit),
+            onPressed: () {
+              print('Go to profile edit page');
+            },
           ),
+          body: vm.busy
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              // Oh dear. I need a CustomScrollView with slivers because of the user profile posts section gridview
+              : ListView(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  children: [
+                    UserProfileTopSection(
+                      userImageUrl: vm.userImageUrl,
+                      postCount: vm.postCount,
+                      followersCount: vm.followersCount,
+                      followingCount: vm.followingCount,
+                    ),
+                    UserProfileNameSection(vm.name),
+                    UserProfileBioSection(vm.bio),
+                    const SizedBox(height: 16),
+                    // passing in uid to separate post fetching from user fetch
+                    // assuming they would be separate calls,
+                    // as well as handling pagination.
+                    UserProfilePostsSection(uid: vm.uid)
+                  ],
+                ),
         );
       },
     );
   }
 }
 
-class UserProfileTopSection extends StatelessWidget {
-  const UserProfileTopSection({
-    super.key,
-    this.userImageUrl,
-    this.postCount = 0,
-    this.followersCount = 0,
-    this.followingCount = 0,
-  });
+class UserProfileBioSection extends StatelessWidget {
+  const UserProfileBioSection(this.bio, {super.key});
 
-  final String? userImageUrl;
-  final int postCount;
-  final int followersCount;
-  final int followingCount;
+  final String bio;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(50),
-            child: CachedNetworkImage(
-              imageUrl: "http://via.placeholder.com/100x100",
-              placeholder: (context, url) => const CircularProgressIndicator(),
-              errorWidget: (context, url, error) => const Icon(Icons.error),
-            ),
-          ),
-          UserProfileCountItemComponent(
-            text: 'Posts',
-            count: postCount,
-          ),
-          UserProfileCountItemComponent(
-            text: 'Followers',
-            count: followersCount,
-          ),
-          UserProfileCountItemComponent(
-            text: 'Following',
-            count: followingCount,
-          ),
-        ],
-      ),
-    );
+    return Text(bio);
   }
 }
 
-class UserProfileCountItemComponent extends StatelessWidget {
-  const UserProfileCountItemComponent({
-    super.key,
-    required this.text,
-    required this.count,
-  });
+class UserProfileNameSection extends StatelessWidget {
+  const UserProfileNameSection(this.name, {super.key});
 
-  final String text;
-  final int count;
+  final String name;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          count.toString(),
-          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-        ),
-        Text(text, style: Theme.of(context).textTheme.bodySmall),
-      ],
+    return Text(
+      name,
+      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
     );
   }
 }
