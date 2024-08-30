@@ -1,16 +1,11 @@
-# sample_social
+# Tasks for Coding Exercise
 
-A new Flutter project.
+Create a simple Flutter app that has basic social capabilities
 
-## Getting Started
+A user centric view where they can see their profile
+Screen for listing mock posts from friends and a detail view of the posts
+Placeholders for what good data structures for users and posts and friends
 
-This project is a starting point for a Flutter application.
+# Thoughts
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+I am moldable and adaptable, and can pick up on established patterns quickly. In this coding exercise, to stay true to the time limit, I am using patterns I am used to with reducing scope.
